@@ -34734,7 +34734,7 @@ function Form() {
   const createNote = async () => {
     if (titleTextReference.current.value !== "" || descriptionTextReference.current.value !== "") {
       await axios$1.post(
-        "http://localhost:4000/createnote",
+        "https://notifyapp-server.onrender.com/createnote",
         {
           title: titleTextReference.current.value,
           description: descriptionTextReference.current.value
@@ -34972,7 +34972,7 @@ function DeleteAndUpdate() {
   const { isOpen, onOpen, onClose } = useDisclosure$1();
   const cancelRef = reactExports.useRef();
   const updateNote = async () => {
-    await axios$1.post("http://localhost:4000/modifynote", {
+    await axios$1.post("https://notifyapp-server.onrender.com/modifynote", {
       id: matchedNoteByID._id,
       newTitle: titleText,
       newDescription: descriptionText
@@ -34987,7 +34987,7 @@ function DeleteAndUpdate() {
   };
   const deleteNote = async () => {
     await axios$1.post(
-      "http://localhost:4000/deletenote",
+      "https://notifyapp-server.onrender.com/deletenote",
       { id: matchedNoteByID._id },
       { headers: { "Content-Type": "application/json" } }
     );
@@ -35281,7 +35281,7 @@ function Error$1({ message }) {
 }
 function Read() {
   const getNotesDataAndReturnToQuery = async () => {
-    const { data } = await axios$1.get("http://localhost:4000/rendernotes", {
+    const { data } = await axios$1.get("https://notifyapp-server.onrender.com/rendernotes", {
       headers: { "Content-Type": "application/json" }
     });
     return data;
